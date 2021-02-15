@@ -9,7 +9,16 @@
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
-        android:layout_height="273dp"></com.github.mikephil.charting.charts.LineChart>
+        android:layout_height="273dp"
+        android:layout_marginTop="10dp"
+        android:elevation="4dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line_chart"
+        android:layout_marginTop="10dp"
+        android:text="query bitcoin api" />
 
 
 </RelativeLayout>
