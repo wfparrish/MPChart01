@@ -9,11 +9,12 @@
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
-        android:layout_height="273dp"
+        android:layout_height="250dp"
         android:layout_marginTop="10dp"
         android:elevation="4dp" />
 
     <Button
+        android:id="@+id/bitcoin_api_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/line_chart"
