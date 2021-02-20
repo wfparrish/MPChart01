@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     LineChart mpLineChart;
     Button bitCoinApiButton;
+    private double[] bitCoinData;
+    ArrayList<Entry> dataVals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,102 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         //Log.e("Rest Response", response.toString());
-
-                        testFunction(response);
-
-                        //starting here is the private method you need to create and call
-                        //You need a duplicate one for the Teucrium Corn Fund ETV (CORN) corn API
-                        //Then
-                        try {
-                            double bitCoinData[] = {
-                                    (double) response.getJSONObject("bpi").get("2021-01-20"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-21"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-22"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-23"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-24"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-25"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-26"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-27"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-28"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-29"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-30"),
-                                    (double) response.getJSONObject("bpi").get("2021-01-31"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-01"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-02"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-03"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-04"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-05"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-06"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-07"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-08"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-09"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-10"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-11"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-12"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-13"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-14"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-15"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-16"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-17"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-18"),
-                                    (double) response.getJSONObject("bpi").get("2021-02-19"),
-                            };
-
-                            ArrayList<Entry> dataVals = new ArrayList<>();
-
-                            dataVals.add(new Entry(0, (float) bitCoinData[0]));
-                            dataVals.add(new Entry(1, (float) bitCoinData[1]));
-                            dataVals.add(new Entry(2, (float) bitCoinData[2]));
-                            dataVals.add(new Entry(3, (float) bitCoinData[3]));
-                            dataVals.add(new Entry(4, (float) bitCoinData[4]));
-                            dataVals.add(new Entry(5, (float) bitCoinData[5]));
-                            dataVals.add(new Entry(6, (float) bitCoinData[6]));
-                            dataVals.add(new Entry(7, (float) bitCoinData[7]));
-                            dataVals.add(new Entry(8, (float) bitCoinData[8]));
-                            dataVals.add(new Entry(9, (float) bitCoinData[9]));
-                            dataVals.add(new Entry(10, (float) bitCoinData[10]));
-                            dataVals.add(new Entry(11, (float) bitCoinData[11]));
-                            dataVals.add(new Entry(12, (float) bitCoinData[12]));
-                            dataVals.add(new Entry(13, (float) bitCoinData[13]));
-                            dataVals.add(new Entry(14, (float) bitCoinData[14]));
-                            dataVals.add(new Entry(15, (float) bitCoinData[15]));
-                            dataVals.add(new Entry(16, (float) bitCoinData[16]));
-                            dataVals.add(new Entry(17, (float) bitCoinData[17]));
-                            dataVals.add(new Entry(18, (float) bitCoinData[18]));
-                            dataVals.add(new Entry(19, (float) bitCoinData[19]));
-                            dataVals.add(new Entry(20, (float) bitCoinData[20]));
-                            dataVals.add(new Entry(21, (float) bitCoinData[21]));
-                            dataVals.add(new Entry(22, (float) bitCoinData[22]));
-                            dataVals.add(new Entry(23, (float) bitCoinData[23]));
-                            dataVals.add(new Entry(24, (float) bitCoinData[24]));
-                            dataVals.add(new Entry(25, (float) bitCoinData[25]));
-                            dataVals.add(new Entry(26, (float) bitCoinData[26]));
-                            dataVals.add(new Entry(27, (float) bitCoinData[27]));
-                            dataVals.add(new Entry(28, (float) bitCoinData[28]));
-                            dataVals.add(new Entry(29, (float) bitCoinData[29]));
-                            dataVals.add(new Entry(30, (float) bitCoinData[30]));
-
-                            //Lines 125 to
-                            mpLineChart = (LineChart) findViewById(R.id.line_chart);
-
-                            //The button that loads the data from the API call into the chart
-                            bitCoinApiButton = findViewById(R.id.bitcoin_api_button);
-                            bitCoinApiButton.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    LineDataSet lineDataSet1 = new LineDataSet(dataVals, "30 Day Rolling Bitcoin Prices");
-                                    ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                                    dataSets.add(lineDataSet1);
-
-                                    LineData data = new LineData(dataSets);
-                                    mpLineChart.setData(data);
-                                    mpLineChart.invalidate();
-                                }
-                            });
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        dataVals = bitcoinDataFunction(response);
                     }
                 },
                 new Response.ErrorListener() {
@@ -160,15 +67,110 @@ public class MainActivity extends AppCompatActivity {
 
         requestQueue.add(objectRequest);
 
-    }
+        //Links the line chart XML to the java code
+        mpLineChart = (LineChart) findViewById(R.id.line_chart);
 
-      private void testFunction(JSONObject response) {
+        //The button that loads the data from the API call into the chart
+        bitCoinApiButton = findViewById(R.id.bitcoin_api_button);
+        bitCoinApiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Inside here is where we are going to divide bitcoins by corn share prices
+                //Eventually passing the values to an arraylist named dataVals, which will
+                //be loaded by this onClick() listener into lineDataSet1
+
+                LineDataSet lineDataSet1 = new LineDataSet(dataVals, "30 Day Rolling Bitcoin Prices");
+                ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                dataSets.add(lineDataSet1);
+
+                LineData data = new LineData(dataSets);
+                mpLineChart.setData(data);
+                mpLineChart.invalidate();
+            }
+        });
+
+    }//end of onCreate()
+
+      private ArrayList<Entry> bitcoinDataFunction(JSONObject response) {
         System.out.println("Bitcoin API data starting here: ");
         System.out.println(response.toString());
+          ArrayList<Entry> dataVals = new ArrayList<>();
+          try {
+              bitCoinData = new double[] {
+                      (double) response.getJSONObject("bpi").get("2021-01-20"),
+                      (double) response.getJSONObject("bpi").get("2021-01-21"),
+                      (double) response.getJSONObject("bpi").get("2021-01-22"),
+                      (double) response.getJSONObject("bpi").get("2021-01-23"),
+                      (double) response.getJSONObject("bpi").get("2021-01-24"),
+                      (double) response.getJSONObject("bpi").get("2021-01-25"),
+                      (double) response.getJSONObject("bpi").get("2021-01-26"),
+                      (double) response.getJSONObject("bpi").get("2021-01-27"),
+                      (double) response.getJSONObject("bpi").get("2021-01-28"),
+                      (double) response.getJSONObject("bpi").get("2021-01-29"),
+                      (double) response.getJSONObject("bpi").get("2021-01-30"),
+                      (double) response.getJSONObject("bpi").get("2021-01-31"),
+                      (double) response.getJSONObject("bpi").get("2021-02-01"),
+                      (double) response.getJSONObject("bpi").get("2021-02-02"),
+                      (double) response.getJSONObject("bpi").get("2021-02-03"),
+                      (double) response.getJSONObject("bpi").get("2021-02-04"),
+                      (double) response.getJSONObject("bpi").get("2021-02-05"),
+                      (double) response.getJSONObject("bpi").get("2021-02-06"),
+                      (double) response.getJSONObject("bpi").get("2021-02-07"),
+                      (double) response.getJSONObject("bpi").get("2021-02-08"),
+                      (double) response.getJSONObject("bpi").get("2021-02-09"),
+                      (double) response.getJSONObject("bpi").get("2021-02-10"),
+                      (double) response.getJSONObject("bpi").get("2021-02-11"),
+                      (double) response.getJSONObject("bpi").get("2021-02-12"),
+                      (double) response.getJSONObject("bpi").get("2021-02-13"),
+                      (double) response.getJSONObject("bpi").get("2021-02-14"),
+                      (double) response.getJSONObject("bpi").get("2021-02-15"),
+                      (double) response.getJSONObject("bpi").get("2021-02-16"),
+                      (double) response.getJSONObject("bpi").get("2021-02-17"),
+                      (double) response.getJSONObject("bpi").get("2021-02-18"),
+                      (double) response.getJSONObject("bpi").get("2021-02-19"),
+              };
+
+              dataVals.add(new Entry(0, (float) bitCoinData[0]));
+              dataVals.add(new Entry(1, (float) bitCoinData[1]));
+              dataVals.add(new Entry(2, (float) bitCoinData[2]));
+              dataVals.add(new Entry(3, (float) bitCoinData[3]));
+              dataVals.add(new Entry(4, (float) bitCoinData[4]));
+              dataVals.add(new Entry(5, (float) bitCoinData[5]));
+              dataVals.add(new Entry(6, (float) bitCoinData[6]));
+              dataVals.add(new Entry(7, (float) bitCoinData[7]));
+              dataVals.add(new Entry(8, (float) bitCoinData[8]));
+              dataVals.add(new Entry(9, (float) bitCoinData[9]));
+              dataVals.add(new Entry(10, (float) bitCoinData[10]));
+              dataVals.add(new Entry(11, (float) bitCoinData[11]));
+              dataVals.add(new Entry(12, (float) bitCoinData[12]));
+              dataVals.add(new Entry(13, (float) bitCoinData[13]));
+              dataVals.add(new Entry(14, (float) bitCoinData[14]));
+              dataVals.add(new Entry(15, (float) bitCoinData[15]));
+              dataVals.add(new Entry(16, (float) bitCoinData[16]));
+              dataVals.add(new Entry(17, (float) bitCoinData[17]));
+              dataVals.add(new Entry(18, (float) bitCoinData[18]));
+              dataVals.add(new Entry(19, (float) bitCoinData[19]));
+              dataVals.add(new Entry(20, (float) bitCoinData[20]));
+              dataVals.add(new Entry(21, (float) bitCoinData[21]));
+              dataVals.add(new Entry(22, (float) bitCoinData[22]));
+              dataVals.add(new Entry(23, (float) bitCoinData[23]));
+              dataVals.add(new Entry(24, (float) bitCoinData[24]));
+              dataVals.add(new Entry(25, (float) bitCoinData[25]));
+              dataVals.add(new Entry(26, (float) bitCoinData[26]));
+              dataVals.add(new Entry(27, (float) bitCoinData[27]));
+              dataVals.add(new Entry(28, (float) bitCoinData[28]));
+              dataVals.add(new Entry(29, (float) bitCoinData[29]));
+              dataVals.add(new Entry(30, (float) bitCoinData[30]));
+
+          } catch (JSONException e) {
+              e.printStackTrace();
+          }
+
+        return dataVals;
       }
 
-//    private ArrayList<Entry> dataValues1()
-//    {
+//    private ArrayList<Entry> dataValues1() {
 //        ArrayList<Entry> dataVals = new ArrayList<Entry>();
 //        dataVals.add(new Entry(0,5));
 //        dataVals.add(new Entry(500,7));
@@ -221,4 +223,4 @@ public class MainActivity extends AppCompatActivity {
 //        return dataVals;
 //    }//end of dataValues1()
 
-}
+}//end of MainActivity
