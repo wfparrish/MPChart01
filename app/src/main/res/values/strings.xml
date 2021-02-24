@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Bits N Bourbon Bitcoin App</string>
+
+    <string-array name="stock_tickers">
+        <item>CORN</item>
+        <item>WEAT</item>
+        <item>SOYB</item>
+        <item>CANE</item>
+    </string-array>
+
+    <string-array name="bitcoin_tickers">
+        <item>BTC</item>
+        <item>ETH</item>
+        <item>BCH</item>
+        <item>LTC</item>
+    </string-array>
 </resources>
