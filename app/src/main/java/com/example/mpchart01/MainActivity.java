@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Entry> wheatVals;
     ArrayList<Entry> soybVals;
     ArrayList<Entry> sugarVals;
-    ArrayList<Entry> cornBitCoin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +62,7 @@ public class MainActivity extends AppCompatActivity {
         bitCoinSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bitCoinSpinner.setAdapter(bitCoinSpinnerAdapter);
 
-        //You could get the Bitcoin BITC from marketstack.com.
-        //You would then have a consistent way that we are pulling data in, plus it would let you do more than query 30 days exclusively.
-        //It would solve the rolling date error also:
-        //String URL1="https://api.marketstack.com/v1/eod?access_key=86746e122918145ebf3f1473bf378d26&symbols=BITC";
+
         String URL1="https://api.coindesk.com/v1/bpi/historical/close.json";
 
 
@@ -185,28 +181,69 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//             For each element inside of two arrays of equal length
-//                -divide the value of the element at matching index i
-//                 with the value of the element at matching index i
-//                -return the result of each division to cornBitCoin array at matching index i
-//                -return cornBitCoin arrayList element
+                //onClick,
+                //declare a variable stockTickerPrice
+                // get the stockSpinner.getSelectedItem.toString() and assign the value to stockTicker
 
+                String stockTicker = stockSpinner.getSelectedItem().toString();
+
+                //the amount of days we are analyzing. Here it is always the size of the bitcoin API object
                 int size = dataVals.size();
-                ArrayList<Entry> cornBitCoin = new ArrayList<>();
+                ArrayList<Entry> commodityBitCoin = new ArrayList<>();
 
-                for(int i = 0; i <= size - 1; i++) {
-                    float result;
-                    float bitCoinPrice = dataVals.get(i).getY();
-                    System.out.println(bitCoinPrice);
-                    float cornPrice = cornVals.get(i).getY();
-                    System.out.println(cornPrice);
-                    result = cornPrice/bitCoinPrice;
-                    System.out.println(result);
-                    cornBitCoin.add(new Entry(i, result));
+                //The switch for the commodities ticker spinner
+                switch (stockTicker) {
+                  case "CORN":
+                      for(int i = 0; i <= size - 1; i++) {
+                          float result;
+                          float bitCoinPrice = dataVals.get(i).getY();
+                          System.out.println(bitCoinPrice);
+                          float cornPrice = cornVals.get(i).getY();
+                          System.out.println(cornPrice);
+                          result = cornPrice/bitCoinPrice;
+                          System.out.println(result);
+                          commodityBitCoin.add(new Entry(i, result));
+                      }
+                      break;
+                    case "WEAT":
+                        for(int i = 0; i <= size - 1; i++) {
+                            float result;
+                            float bitCoinPrice = dataVals.get(i).getY();
+                            System.out.println(bitCoinPrice);
+                            float wheatPrice = wheatVals.get(i).getY();
+                            System.out.println(wheatPrice);
+                            result = wheatPrice/bitCoinPrice;
+                            System.out.println(result);
+                            commodityBitCoin.add(new Entry(i, result));
+                        }
+                        break;
+                    case "SOYB":
+                        for(int i = 0; i <= size - 1; i++) {
+                            float result;
+                            float bitCoinPrice = dataVals.get(i).getY();
+                            System.out.println(bitCoinPrice);
+                            float soybeansPrice = soybVals.get(i).getY();
+                            System.out.println(soybeansPrice);
+                            result = soybeansPrice/bitCoinPrice;
+                            System.out.println(result);
+                            commodityBitCoin.add(new Entry(i, result));
+                        }
+                        break;
+                    case "CANE":
+                        for(int i = 0; i <= size - 1; i++) {
+                            float result;
+                            float bitCoinPrice = dataVals.get(i).getY();
+                            System.out.println(bitCoinPrice);
+                            float sugarPrice = sugarVals.get(i).getY();
+                            System.out.println(sugarPrice);
+                            result = sugarPrice/bitCoinPrice;
+                            System.out.println(result);
+                            commodityBitCoin.add(new Entry(i, result));
+                        }
+                        break;
                 }
 
-
-                LineDataSet lineDataSet1 = new LineDataSet(cornBitCoin, "Teucrium Corn Fund ETV (CORN) / Bitcoin");
+                LineDataSet lineDataSet1 = new LineDataSet(commodityBitCoin, "Teucrium Fund ETV ("+ stockTicker + ") / Bitcoin");
                 ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                 dataSets.add(lineDataSet1);
 
@@ -225,8 +262,6 @@ public class MainActivity extends AppCompatActivity {
           try {
               bitCoinData = new double[] {
 
-                      (double) response.getJSONObject("bpi").get("2021-01-24"),
-                      (double) response.getJSONObject("bpi").get("2021-01-25"),
                       (double) response.getJSONObject("bpi").get("2021-01-26"),
                       (double) response.getJSONObject("bpi").get("2021-01-27"),
                       (double) response.getJSONObject("bpi").get("2021-01-28"),
@@ -256,6 +291,9 @@ public class MainActivity extends AppCompatActivity {
                       (double) response.getJSONObject("bpi").get("2021-02-21"),
                       (double) response.getJSONObject("bpi").get("2021-02-22"),
                       (double) response.getJSONObject("bpi").get("2021-02-23"),
+                      (double) response.getJSONObject("bpi").get("2021-02-24"),
+                      (double) response.getJSONObject("bpi").get("2021-02-25"),
+
               };
 
               dataVals.add(new Entry(0, (float) bitCoinData[0]));
