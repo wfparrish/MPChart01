@@ -164,7 +164,7 @@ public class BitCoinCandleStickActivity extends AppCompatActivity {
 
         dataList.setShadowColor(getResources().getColor(R.color.design_default_color_secondary));
         dataList.setShadowWidth(0.8f);
-        dataList.setDecreasingColor(getResources().getColor(R.color.design_default_color_on_secondary));
+        dataList.setDecreasingColor(getResources().getColor(R.color.design_default_color_surface));
         dataList.setDecreasingPaintStyle(Paint.Style.FILL);
         dataList.setIncreasingColor(getResources().getColor(R.color.design_default_color_primary_variant));
         dataList.setIncreasingPaintStyle(Paint.Style.FILL);
