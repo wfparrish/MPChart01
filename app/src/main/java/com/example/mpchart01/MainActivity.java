@@ -2,7 +2,6 @@ package com.example.mpchart01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.VoiceInteractor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -262,13 +261,6 @@ public class MainActivity extends AppCompatActivity {
           try {
               bitCoinData = new double[] {
 
-                      (double) response.getJSONObject("bpi").get("2021-01-26"),
-                      (double) response.getJSONObject("bpi").get("2021-01-27"),
-                      (double) response.getJSONObject("bpi").get("2021-01-28"),
-                      (double) response.getJSONObject("bpi").get("2021-01-29"),
-                      (double) response.getJSONObject("bpi").get("2021-01-30"),
-                      (double) response.getJSONObject("bpi").get("2021-01-31"),
-                      (double) response.getJSONObject("bpi").get("2021-02-01"),
                       (double) response.getJSONObject("bpi").get("2021-02-02"),
                       (double) response.getJSONObject("bpi").get("2021-02-03"),
                       (double) response.getJSONObject("bpi").get("2021-02-04"),
@@ -293,6 +285,14 @@ public class MainActivity extends AppCompatActivity {
                       (double) response.getJSONObject("bpi").get("2021-02-23"),
                       (double) response.getJSONObject("bpi").get("2021-02-24"),
                       (double) response.getJSONObject("bpi").get("2021-02-25"),
+                      (double) response.getJSONObject("bpi").get("2021-02-26"),
+                      (double) response.getJSONObject("bpi").get("2021-02-27"),
+                      (double) response.getJSONObject("bpi").get("2021-02-28"),
+                      (double) response.getJSONObject("bpi").get("2021-03-01"),
+                      (double) response.getJSONObject("bpi").get("2021-03-02"),
+                      (double) response.getJSONObject("bpi").get("2021-03-03"),
+                      (double) response.getJSONObject("bpi").get("2021-03-04"),
+
 
               };
 
@@ -618,7 +618,6 @@ public class MainActivity extends AppCompatActivity {
             double sbData27 = soybData[27].getDouble("open");
             double sbData28 = soybData[28].getDouble("open");
             double sbData29 = soybData[29].getDouble("open");
-
 
             soybVals.add(new Entry(0, (float) sbData0));
             soybVals.add(new Entry(1, (float) sbData1));

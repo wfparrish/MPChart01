@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bits N Bourbon Bitcoin App</string>
+    <string name="app_name">BTC Brunch App</string>
 
     <string-array name="stock_tickers">
         <item>CORN</item>
