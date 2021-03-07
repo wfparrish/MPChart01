@@ -11,11 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MPChart01">
-        <activity android:name=".BitCoinCandleStickActivity"
+        <activity
+            android:name=".BitCoinVsStocksActivity"
             android:exported="true"
-            android:label="BTC Candlestick Chart"
-            android:parentActivityName=".MainActivity"
-            />
+            android:label="BTC Brunch Stocks/Bitcoin Line"
+            android:parentActivityName=".MainActivity" />
+
+
+        <activity
+            android:name=".BitCoinCandleStickActivity"
+            android:exported="true"
+            android:label="BTC Brunch Candlestick Chart"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

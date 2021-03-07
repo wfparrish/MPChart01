@@ -9,8 +9,8 @@
     <com.github.mikephil.charting.charts.CandleStickChart
         android:id="@+id/candle_stick_chart"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="0dp"
         android:elevation="4dp" />
 
     <Button

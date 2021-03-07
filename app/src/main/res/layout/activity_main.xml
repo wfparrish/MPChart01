@@ -1,46 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/line_chart"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginTop="10dp"
-        android:elevation="4dp" />
-
-    <Button
-        android:id="@+id/bitcoin_api_button"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/line_chart"
-        android:layout_marginTop="10dp"
-        android:text="query bitcoin api" />
+        tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bitcoin_api_button">
 
-        <Spinner
-            android:id="@+id/stock_spinner"
-            android:layout_width="wrap_content"
+<!--        &lt;!&ndash;The Bitcoin/Stock Line Chart graph&ndash;&gt;-->
+<!--        <com.github.mikephil.charting.charts.LineChart-->
+<!--            android:id="@+id/line_chart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="220dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:elevation="4dp" />-->
+
+<!--        &lt;!&ndash;The Query Bitcoin API button&ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/bitcoin_api_button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/line_chart"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="query bitcoin api" />-->
+
+<!--        &lt;!&ndash;The Spinners for the stock tickers and bitcoin prices/stock prices&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/spinner_holder"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/bitcoin_api_button">-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/stock_spinner"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
+
+<!--            <Spinner-->
+<!--                android:id="@+id/bitcoin_spinner"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
+
+<!--        </LinearLayout>-->
+
+
+        <!--Card View1 of the Main Screen-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_stock_bitcoin_selection"
+            android:layout_marginTop="30dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            />
 
-        <Spinner
-            android:id="@+id/bitcoin_spinner"
-            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pexels_photo_6777575" />
+
+                <TextView
+                    android:id="@+id/text_view_candle_stick_path"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Stock/Bitcoin Line Chart"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--The Card View2 of the Main Screen-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_candle_stick_selection"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            />
+            android:layout_below="@id/card_view_stock_bitcoin_selection"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/candle_stick_chart_image" />
+
+                <TextView
+                    android:id="@+id/text_view_stock_bitcoin_path"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Candle Stick Chart Creator"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <!--End of Card Views-->
+
+    </RelativeLayout>
+
+</ScrollView>
 
 
-    </LinearLayout>
-
-
-
-</RelativeLayout>
