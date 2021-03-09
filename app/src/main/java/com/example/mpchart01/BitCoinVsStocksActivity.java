@@ -2,8 +2,6 @@ package com.example.mpchart01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.cardview.widget.CardView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,16 +51,12 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bit_coin_vs_stocks);
 
-
-        //These objects must have click events attached to them
-        //The click events will trigger a call to the API
-
-        Spinner stockSpinner = (Spinner) findViewById(R.id.stock_spinner);
+        Spinner stockSpinner = findViewById(R.id.stock_spinner);
         ArrayAdapter<String> stockSpinnerAdapter = new ArrayAdapter<String>(BitCoinVsStocksActivity.this, android.R.layout.simple_list_item_single_choice, getResources().getStringArray(R.array.stock_tickers));
         stockSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stockSpinner.setAdapter(stockSpinnerAdapter);
 
-        Spinner bitCoinSpinner = (Spinner) findViewById(R.id.bitcoin_spinner);
+        Spinner bitCoinSpinner = findViewById(R.id.bitcoin_spinner);
         ArrayAdapter<String> bitCoinSpinnerAdapter = new ArrayAdapter<String>(BitCoinVsStocksActivity.this, android.R.layout.simple_list_item_single_choice, getResources().getStringArray(R.array.bitcoin_tickers));
         bitCoinSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bitCoinSpinner.setAdapter(bitCoinSpinnerAdapter);
@@ -178,7 +172,7 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
         requestQueue.add(objectRequest5);
 
         //Links the line chart XML to the java code
-        mpLineChart = (LineChart) findViewById(R.id.line_chart);
+        mpLineChart = findViewById(R.id.line_chart);
 
         //The button that loads the data from the API call into the chart
         bitCoinApiButton = findViewById(R.id.bitcoin_api_button);
@@ -255,8 +249,8 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
                 LineData data = new LineData(dataSets);
                 mpLineChart.setData(data);
                 mpLineChart.invalidate();
-            }
-        });
+            }//end of onClick
+        });//end of .setOnClickListener Interface is this parenthesis/semicolon
     }//end of onCreate()
 
     private ArrayList<Entry> bitcoinDataFunction(JSONObject response) {
@@ -266,7 +260,7 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
         try {
             bitCoinData = new double[] {
 
-                    (double) response.getJSONObject("bpi").get("2021-02-04"),
+
                     (double) response.getJSONObject("bpi").get("2021-02-05"),
                     (double) response.getJSONObject("bpi").get("2021-02-06"),
                     (double) response.getJSONObject("bpi").get("2021-02-07"),
@@ -297,6 +291,7 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
                     (double) response.getJSONObject("bpi").get("2021-03-04"),
                     (double) response.getJSONObject("bpi").get("2021-03-05"),
                     (double) response.getJSONObject("bpi").get("2021-03-06"),
+                    (double) response.getJSONObject("bpi").get("2021-03-07"),
 
 
             };

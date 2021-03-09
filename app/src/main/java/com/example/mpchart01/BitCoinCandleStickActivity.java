@@ -6,11 +6,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.CandleStickChart;
@@ -21,18 +25,80 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.CandleData;
 import com.github.mikephil.charting.data.CandleDataSet;
 import com.github.mikephil.charting.data.CandleEntry;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import android.os.Bundle;
 
-import java.util.ArrayList;
-
 public class BitCoinCandleStickActivity extends AppCompatActivity {
+
+    CandleStickChart candleStickChart;
+    Button candleStickApiButton;
+    private double[] bitCoinData;
+    ArrayList<Entry> dataVals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bit_coin_candle_stick);
-        CandleStickChart candleStickChart = findViewById(R.id.candle_stick_chart);
+
+        Spinner bitCoinSpinner = findViewById(R.id.bitcoin_spinner);
+        ArrayAdapter<String> bitCoinSpinnerAdapter = new ArrayAdapter<String>(BitCoinCandleStickActivity.this, android.R.layout.simple_list_item_single_choice, getResources().getStringArray(R.array.bitcoin_tickers));
+        bitCoinSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        bitCoinSpinner.setAdapter(bitCoinSpinnerAdapter);
+
+
+        String URL="https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=1";
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+
+        JsonArrayRequest objectRequest1 = new JsonArrayRequest(Request.Method.GET,
+                URL,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e("Ticker Response", response.toString());
+                        dataVals = tickerDataFunction(response);
+                        System.out.println("This is the dataVals variable output: "+dataVals);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Rest Response Error", error.toString());
+                    }
+                }
+        );
+
+        requestQueue.add(objectRequest1);
+
+        //Links the line chart XML to the java code
+        candleStickChart = findViewById(R.id.candle_stick_chart);
+
+        //The button that loads the data from the API call into the chart
+        candleStickApiButton = findViewById(R.id.candle_stick_api_button);
+        candleStickApiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Here dude, Hello Man! " + dataVals);
+                System.out.println("Here dude, Hello Man! " + dataVals);
+                System.out.println("Here dude, Hello Man! " + dataVals);
+                System.out.println("Here dude, Hello Man! " + dataVals);
+
+            }
+        });
+
+
+
         candleStickChart.setHighlightPerDragEnabled(true);
         candleStickChart.setDrawBorders(true);
         candleStickChart.setBorderColor(getResources().getColor(R.color.design_default_color_primary));
@@ -176,6 +242,56 @@ public class BitCoinCandleStickActivity extends AppCompatActivity {
         candleStickChart.setData(data);
         candleStickChart.setBackgroundColor(Color.rgb(0, 0, 0));
         candleStickChart.invalidate();
+    }//end of onCreate()
+
+    private ArrayList<Entry> tickerDataFunction(JSONArray response) {
+
+        ArrayList<Entry> dataVals = new ArrayList<>();
+        try {
+
+           System.out.println(response.getJSONArray(0));
+            JSONArray candlestickData = response.getJSONArray(0);
+
+            //We need to build a for loop
+            //System.out.println(response.length());
+
+            //Create a candlestick class that holds the important values
+            //For each array element in the response, create a candlestick instance
+            //Fill up its instance variables and load the instance(s) of candlestick(s) in a "global" CandleStick List
+            //Those values will then be available to the CandleEntry method being used above this code
+
+            Long data0 = (Long) candlestickData.get(0);
+            String data1 = (String) candlestickData.get(1);
+            String data2 = (String) candlestickData.get(2);
+            String data3 = (String) candlestickData.get(3);
+            String data4 = (String) candlestickData.get(4);
+            System.out.println("This is data0 - Open time " + data0);
+            System.out.println("This is data1 - Open " + data1);
+            System.out.println("This is data2 - High " + data2);
+            System.out.println("This is data3 - Low " + data3);
+            System.out.println("This is data4 - Close " + data4);
+
+            float convertedData0 = (float) data0;
+            float convertedData1 = Float.parseFloat(data1);
+            float convertedData2 = Float.parseFloat(data2);
+            float convertedData3 = Float.parseFloat(data3);
+            float convertedData4 = Float.parseFloat(data4);
+
+            System.out.println("This is convertedData0 - Open time " + convertedData0);
+            System.out.println("This is convertedData1 - Open " + convertedData1);
+            System.out.println("This is convertedData2 - High " + convertedData2);
+            System.out.println("This is convertedData3 - Low " + convertedData3);
+            System.out.println("This is convertedData4 - Close " + convertedData4);
+
+
+            //I don't know what the return type of this current method should be, if anything...
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return dataVals;
     }
 
 

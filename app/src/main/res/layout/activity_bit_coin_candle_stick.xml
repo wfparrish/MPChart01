@@ -14,11 +14,25 @@
         android:elevation="4dp" />
 
     <Button
-        android:id="@+id/bitcoin_api_button"
+        android:id="@+id/candle_stick_api_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/candle_stick_chart"
         android:layout_marginTop="10dp"
         android:text="present candlestick data" />
+
+    <!--The Spinners for the stock tickers and bitcoin prices/stock prices-->
+    <LinearLayout
+        android:id="@+id/spinner_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/candle_stick_api_button">
+
+        <Spinner
+            android:id="@+id/bitcoin_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </RelativeLayout>
