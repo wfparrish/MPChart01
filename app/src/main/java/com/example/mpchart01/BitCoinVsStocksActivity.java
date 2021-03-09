@@ -260,8 +260,6 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
         try {
             bitCoinData = new double[] {
 
-
-                    (double) response.getJSONObject("bpi").get("2021-02-05"),
                     (double) response.getJSONObject("bpi").get("2021-02-06"),
                     (double) response.getJSONObject("bpi").get("2021-02-07"),
                     (double) response.getJSONObject("bpi").get("2021-02-08"),
@@ -292,7 +290,7 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
                     (double) response.getJSONObject("bpi").get("2021-03-05"),
                     (double) response.getJSONObject("bpi").get("2021-03-06"),
                     (double) response.getJSONObject("bpi").get("2021-03-07"),
-
+                    (double) response.getJSONObject("bpi").get("2021-03-08"),
 
             };
 
