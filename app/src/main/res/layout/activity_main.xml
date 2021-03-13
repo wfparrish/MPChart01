@@ -75,7 +75,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="Stock/Bitcoin Line Chart"
+                    android:text="Commodity/Bitcoin Line Chart"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -110,7 +110,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="Candle Stick Chart Creator"
+                    android:text="Cryptochart"
                     android:textSize="18sp" />
 
             </LinearLayout>

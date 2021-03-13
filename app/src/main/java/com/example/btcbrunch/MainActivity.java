@@ -1,11 +1,10 @@
-package com.example.mpchart01;
+package com.example.btcbrunch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 

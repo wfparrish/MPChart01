@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mpchart01">
+    package="com.example.btcbrunch">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,18 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MPChart01">
         <activity
-            android:name=".BitCoinVsStocksActivity"
+            android:name="com.example.btcbrunch.BitCoinVsStocksActivity"
             android:exported="true"
             android:label="BTC Brunch Stocks/Bitcoin Line"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.example.btcbrunch.MainActivity" />
 
 
         <activity
-            android:name=".BitCoinCandleStickActivity"
+            android:name="com.example.btcbrunch.BitCoinCandleStickActivity"
             android:exported="true"
             android:label="BTC Brunch Candlestick Chart"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:parentActivityName="com.example.btcbrunch.MainActivity" />
+        <activity android:name="com.example.btcbrunch.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

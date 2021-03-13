@@ -1,4 +1,4 @@
-package com.example.mpchart01;
+package com.example.btcbrunch;
 
 import org.junit.Test;
 
