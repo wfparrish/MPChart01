@@ -192,6 +192,7 @@ public class BitCoinCandleStickActivity extends AppCompatActivity {
                     listValsCandleStick.add(new CandleEntry(idx, candlesticks.get(idx).getHigh(), candlesticks.get(idx).getLow(), candlesticks.get(idx).getOpen(), candlesticks.get(idx).getClose()));
                  }
 
+//                  This call SHOULD destroy any array already in the chart
                   if(candleStickSize > 0) {
                       for(int i = candleStickSize - 1; i >=0; i--) {
                           candlesticks.remove(i);
@@ -217,10 +218,11 @@ public class BitCoinCandleStickActivity extends AppCompatActivity {
                 candleStickChart.setBackgroundColor(Color.rgb(0, 0, 0));
                 candleStickChart.invalidate();
 
-            }
+            }//end of onClick()
         });
     }//end of onCreate()
 
+//The code in this function is almost identical to the code in the onClick because I copied it from the onClick... BE CAREFUL TO KNOW WHERE YOU ARE!!!!
     private ArrayList<Candlestick> tickerDataFunction(JSONArray response) {
 
         ArrayList<CandleEntry> candleVals = new ArrayList<>();
@@ -249,6 +251,45 @@ public class BitCoinCandleStickActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        //Create a loop here that will iterate as many times as size
+        int candleStickSize = candlesticks.size();
+        int listValsCandleStickSize = listValsCandleStick.size();
+        System.out.println("This is the size of candlesticks: " + candleStickSize);
+        System.out.println("This is the size of listValsCandleStick: " + listValsCandleStickSize);
+
+        //clear the chart values and prepare for a new chart in the requestqueue
+        if(listValsCandleStickSize > 0) {
+            for(int i = listValsCandleStickSize - 1; i >= 0; i--) {
+
+                listValsCandleStick.remove(i);
+                listValsCandleStickSize--;
+                //System.out.println(listValsCandleStick.size());
+            }
+
+        }
+
+        for(int idx = 0; idx <= candleStickSize - 1; idx++) {
+            listValsCandleStick.add(new CandleEntry(idx, candlesticks.get(idx).getHigh(), candlesticks.get(idx).getLow(), candlesticks.get(idx).getOpen(), candlesticks.get(idx).getClose()));
+        }
+
+        CandleDataSet dataList = new CandleDataSet(listValsCandleStick, "DataList 1");
+        dataList.setColor(Color.rgb(80, 80, 80));
+
+        dataList.setShadowColor(getResources().getColor(R.color.design_default_color_secondary));
+        dataList.setShadowWidth(0.8f);
+        dataList.setDecreasingColor(getResources().getColor(R.color.design_default_color_surface));
+        dataList.setDecreasingPaintStyle(Paint.Style.FILL);
+        dataList.setIncreasingColor(getResources().getColor(R.color.design_default_color_primary_variant));
+        dataList.setIncreasingPaintStyle(Paint.Style.FILL);
+        dataList.setNeutralColor(Color.LTGRAY);
+        dataList.setDrawValues(false);
+
+        CandleData data = new CandleData(dataList);
+
+        candleStickChart.setData(data);
+        candleStickChart.setBackgroundColor(Color.rgb(0, 0, 0));
+        candleStickChart.invalidate();
 
         return candlesticks;
     }
