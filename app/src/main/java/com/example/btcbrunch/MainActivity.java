@@ -1,6 +1,7 @@
 package com.example.btcbrunch;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_YES);
 
         stockBitCoinCard = findViewById(R.id.card_view_stock_bitcoin_selection);
         candleStickCard = findViewById(R.id.card_view_candle_stick_selection);

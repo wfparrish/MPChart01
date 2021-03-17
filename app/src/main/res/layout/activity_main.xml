@@ -3,50 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".MainActivity">
-
-
-<!--        &lt;!&ndash;The Bitcoin/Stock Line Chart graph&ndash;&gt;-->
-<!--        <com.github.mikephil.charting.charts.LineChart-->
-<!--            android:id="@+id/line_chart"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="220dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:elevation="4dp" />-->
-
-<!--        &lt;!&ndash;The Query Bitcoin API button&ndash;&gt;-->
-<!--        <Button-->
-<!--            android:id="@+id/bitcoin_api_button"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/line_chart"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:text="query bitcoin api" />-->
-
-<!--        &lt;!&ndash;The Spinners for the stock tickers and bitcoin prices/stock prices&ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:id="@+id/spinner_holder"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/bitcoin_api_button">-->
-
-<!--            <Spinner-->
-<!--                android:id="@+id/stock_spinner"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content" />-->
-
-<!--            <Spinner-->
-<!--                android:id="@+id/bitcoin_spinner"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content" />-->
-
-<!--        </LinearLayout>-->
-
 
         <!--Card View1 of the Main Screen-->
         <androidx.cardview.widget.CardView

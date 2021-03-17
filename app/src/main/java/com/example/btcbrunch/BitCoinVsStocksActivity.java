@@ -256,13 +256,6 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
         try {
             bitCoinData = new double[] {
 
-
-
-
-                    (double) response.getJSONObject("bpi").get("2021-02-10"),
-                    (double) response.getJSONObject("bpi").get("2021-02-11"),
-                    (double) response.getJSONObject("bpi").get("2021-02-12"),
-                    (double) response.getJSONObject("bpi").get("2021-02-13"),
                     (double) response.getJSONObject("bpi").get("2021-02-14"),
                     (double) response.getJSONObject("bpi").get("2021-02-15"),
                     (double) response.getJSONObject("bpi").get("2021-02-16"),
@@ -289,7 +282,10 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
                     (double) response.getJSONObject("bpi").get("2021-03-09"),
                     (double) response.getJSONObject("bpi").get("2021-03-10"),
                     (double) response.getJSONObject("bpi").get("2021-03-11"),
-
+                    (double) response.getJSONObject("bpi").get("2021-03-12"),
+                    (double) response.getJSONObject("bpi").get("2021-03-13"),
+                    (double) response.getJSONObject("bpi").get("2021-03-14"),
+                    (double) response.getJSONObject("bpi").get("2021-03-15"),
 
             };
 
@@ -478,7 +474,7 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
             };
 
             double whData0 = wheatData[0].getDouble("open");
-            double whData1 = wheatData[1].getDouble("open");
+            double whData1 = wheatData[1].getDouble("adj_open");
             double whData2 = wheatData[2].getDouble("open");
             double whData3 = wheatData[3].getDouble("open");
             double whData4 = wheatData[4].getDouble("open");
@@ -586,7 +582,7 @@ public class BitCoinVsStocksActivity extends AppCompatActivity {
             };
 
             double sbData0 = soybData[0].getDouble("open");
-            double sbData1 = soybData[1].getDouble("open");
+            double sbData1 = soybData[1].getDouble("adj_open");
             double sbData2 = soybData[2].getDouble("open");
             double sbData3 = soybData[3].getDouble("open");
             double sbData4 = soybData[4].getDouble("open");
