@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BitCoinVsStocksActivity">
+    tools:context="com.btcbrunch.BitCoinVsStocksActivity">
 
     <!--The Bitcoin/Stock Line Chart graph-->
     <com.github.mikephil.charting.charts.LineChart
@@ -15,21 +14,77 @@
         android:layout_marginTop="10dp"
         android:elevation="4dp" />
 
-    <!--The Query Bitcoin API button-->
-    <Button
-        android:id="@+id/bitcoin_api_button"
+    <LinearLayout
+        android:id="@+id/button_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/line_chart"
-        android:layout_marginTop="10dp"
-        android:text="query bitcoin api" />
+        android:layout_below="@id/line_chart">
+        <!--The Query Bitcoin API buttons-->
+        <Button
+            android:id="@+id/bitcoin_api_button0"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="2dp"
+            android:text="7d" />
+
+        <Button
+            android:id="@+id/bitcoin_api_button1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="2dp"
+            android:text="14d" />
+
+        <Button
+            android:id="@+id/bitcoin_api_button2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="2dp"
+            android:text="30d" />
+
+        <Button
+            android:id="@+id/bitcoin_api_button3"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="2dp"
+            android:text="90d" />
+
+        <Button
+            android:id="@+id/bitcoin_api_button4"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="2dp"
+            android:text="180" />
+
+        <Button
+            android:id="@+id/bitcoin_api_button5"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="365" />
+
+
+    </LinearLayout>
+
 
     <!--The Spinners for the stock tickers and bitcoin prices/stock prices-->
     <LinearLayout
         android:id="@+id/spinner_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bitcoin_api_button">
+        android:layout_below="@+id/button_holder">
 
         <Spinner
             android:id="@+id/stock_spinner"

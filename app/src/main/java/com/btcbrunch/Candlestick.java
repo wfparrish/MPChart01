@@ -1,4 +1,4 @@
-package com.example.btcbrunch;
+package com.btcbrunch;
 
 public class Candlestick {
 
